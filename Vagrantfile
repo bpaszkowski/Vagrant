@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "playbooks/init.yml"
   end
 
+
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/infrastructure.yml"
     ansible.extra_vars = {
