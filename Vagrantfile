@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     v.cpus = 3
   end
   config.vm.network "private_network", ip: "192.168.44.44"
-
+  
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/clone_roles.yml"
     ansible.extra_vars = {
@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
       git_branch: "main"
     }
   end
-  
+
   config.vm.provision "ansible_local" do |ansible|
     ansible.galaxy_role_file = 'requirements.yml'
     ansible.galaxy_roles_path = "/etc/ansible/roles"
@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "playbooks/init.yml"
   end
 
-
+  
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/infrastructure.yml"
     ansible.extra_vars = {
@@ -37,4 +37,3 @@ Vagrant.configure("2") do |config|
     config.ssh.username = 'panda'
   end
 end
-
